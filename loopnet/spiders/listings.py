@@ -207,7 +207,7 @@ class ListingsSpider(scrapy.Spider):
         if(len(address) == 1):
             d['address'] = address.xpath(".//text()").get()
         else:
-            d['address'] = address.xpath(".//[2]text()").get()
+            d['address'] = response.xpath("//div[@class='profile-hero-wrapper']//h1[@class='profile-hero-title']/span[2]//text()").get()
         if not d['address']:
             d['address'] = response.xpath("//div[@class='profile-hero-wrapper']//h1[@class='profile-hero-title']/text()").get()
 
